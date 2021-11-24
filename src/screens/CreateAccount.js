@@ -47,10 +47,10 @@ class CreateAccount extends Component {
     
     render() {
       return (
-        <div className="App">
+        <div style={{ fontFamily: '"Roboto Thin", sans-serif' }} className="App">
    
             <header className="App-header">
-            <h1>Join SAMS 2022 by creating an account below!</h1>
+            <pageTitle>Join SAMS 2022 by creating an account below!</pageTitle>
                 <CredentialsForm submitButtonText={"Create Account"} requestF={this.createAccountRequest} />
             </header>
         </div>

@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import {
-    BrowserRouter as Router,
     Link
   } from "react-router-dom";
 import SamNavbar from "../components/SamNavbar";

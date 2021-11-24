@@ -19,7 +19,7 @@ class Dropboxes extends Component {
 
     render() {
         return (
-          <div className="App">
+          <div style={{ fontFamily: '"Roboto", sans-serif' }} className="App">
               <header className="App-header">
               <pageTitle>Submission Dropboxes</pageTitle>
               <PreviewCard title="Dropbox 1" desc="This is a dropbox description" date="10/13/21" buttonText="View Dropbox Submissions"/>

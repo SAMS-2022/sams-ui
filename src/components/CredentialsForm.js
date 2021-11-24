@@ -27,26 +27,32 @@ class CredentialsForm extends Component {
       return (
         <div >
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Username</Form.Label>
+          <Form.Group controlId="email">
+            <Form.Label style={{ marginTop: "100px"}}>Username</Form.Label>
             <Form.Control
+            style={{ fontFamily: '"Roboto", sans-serif' }}
               autoFocus
               type="text"
               value={this.state.username}
               onChange={(e) => this.setState({username: e.target.value})}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group  controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
+            style={{ fontFamily: '"Roboto", sans-serif' }}
               type="password"
               value={this.state.password}
               onChange={(e) => this.setState({password: e.target.value})}
             />
           </Form.Group>
-          <Button block size="lg" type="submit" disabled={!this.validateForm()}>
+          <Form.Group size="lg" controlId="email">
+            
+            <Button style={{ marginTop: "30px"}}block size="lg" type="submit">
             {this.props.submitButtonText}
           </Button>
+          </Form.Group>
+          
         </Form>
       </div>
       );

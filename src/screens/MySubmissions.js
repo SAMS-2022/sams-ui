@@ -22,7 +22,7 @@ class MySubmissions extends Component {
 
     render() {
         return (
-          <div className="App">
+          <div style={{ fontFamily: '"Roboto", sans-serif' }} className="App">
               <header className="App-header">
               <pageTitle>My Paper Submissions</pageTitle>
               <Button block size="lg" type="submit">

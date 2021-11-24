@@ -29,7 +29,7 @@ class App extends Component {
     var dropboxes = (loggedIn) ? (<Route path='/dropboxes' component={Dropboxes} />): <Route path='/dropboxes' component={LoggedOut} />
     var mySubmissions = (loggedIn) ? <Route path='/mySubmissions' component={MySubmissions} />: <Route path='/mySubmissions' component={LoggedOut} />
     var info = (loggedIn) ? (<Route path='/myInfo' component={MyInfo} />): <Route path='/myInfo' component={LoggedOut} />
-    var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={Dropboxes} />): <Route path='/newSubmission' component={LoggedOut} />
+    var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={NewSubmission} />): <Route path='/newSubmission' component={LoggedOut} />
 
     return (
       <div className="App">

@@ -55,10 +55,10 @@ class Login extends Component {
     render() {
        
     return (
-        <div className="App">
+        <div style={{ fontFamily: '"Roboto Thin", sans-serif' }} className="App">
             
             <header className="App-header">
-            <h1>Log into your account below!</h1>
+            <pageTitle>Log into your account below!</pageTitle>
                 <CredentialsForm submitButtonText={"Log In"}
                 requestF={this.loginRequest} />
     
