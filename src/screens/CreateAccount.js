@@ -13,7 +13,7 @@ class CreateAccount extends Component {
       }
 
       createAccountRequest(user, pass){
-        var url = "http://ia2067.pythonanywhere.com/createAccount";
+        var url = "https://ia2067.pythonanywhere.com/createAccount";
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url);
         xhr.setRequestHeader("Access-Control-Allow-Origin", "*");

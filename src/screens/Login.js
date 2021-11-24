@@ -15,7 +15,7 @@ class Login extends Component {
 
     loginRequest(user, pass){
         
-        var url = "http://ia2067.pythonanywhere.com/login";
+        var url = "https://ia2067.pythonanywhere.com/login";
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url);
         xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
