@@ -38,7 +38,8 @@ class Login extends Component {
                 
                 window.location.reload(true);
                 //temp
-                window.location.assign("http://localhost:3000/"); 
+                var currURL = window.location.href;
+                window.location.assign(currURL.replace("/login","")); 
 
               }else{
                 

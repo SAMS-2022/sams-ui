@@ -32,7 +32,8 @@ class CreateAccount extends Component {
                 
                 window.location.reload(true);
                 //temp
-                window.location.assign("http://localhost:3000/login"); 
+                var currURL = window.location.href;
+                window.location.assign(currURL.replace("/createAccount","/login")); 
 
               }else{
                 alert("Unable to create account");
