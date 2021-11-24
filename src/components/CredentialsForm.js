@@ -15,7 +15,7 @@ class CredentialsForm extends Component {
       }
 
     validateForm() {
-      return this.state["username"].length > 3 && this.state["password"].length > 6;
+      return this.state["username"].length > 3 && this.state["password"].length > 3;
     }
 
     handleSubmit(event) {
