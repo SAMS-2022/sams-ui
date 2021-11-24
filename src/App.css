@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-header {
@@ -37,7 +38,7 @@
 }
 
 homeTitle{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Thin', sans-serif;
   font-size: 80px;
   padding-bottom: 50px;
   padding-bottom: 250px;
@@ -46,7 +47,7 @@ homeTitle{
 }
 
 pageTitle{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Thin', sans-serif;
   font-size: 50px;
   padding-bottom: 30px;
   padding-top: 20px;
