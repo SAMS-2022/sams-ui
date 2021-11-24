@@ -11,6 +11,7 @@ import SamNavbar from "./components/SamNavbar";
 import MySubmissions from './screens/MySubmissions';
 import MyInfo from './screens/MyInfo';
 import NewSubmission from './screens/NewSubmission';
+import LoggedOut from './screens/LoggedOut';
 
 class App extends Component {
   
@@ -22,24 +23,27 @@ class App extends Component {
     // localStorage.setItem('role', "default");
   }
 
-  
-  
-  
   render() {
 
+    var loggedIn = (localStorage.getItem('loggedIn') == "true") ? true: false;
+    var dropboxes = (loggedIn) ? (<Route path='/dropboxes' component={Dropboxes} />): <Route path='/dropboxes' component={LoggedOut} />
+    var mySubmissions = (loggedIn) ? <Route path='/mySubmissions' component={MySubmissions} />: <Route path='/mySubmissions' component={LoggedOut} />
+    var info = (loggedIn) ? (<Route path='/myInfo' component={MyInfo} />): <Route path='/myInfo' component={LoggedOut} />
+    var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={Dropboxes} />): <Route path='/newSubmission' component={LoggedOut} />
 
     return (
       <div className="App">
         <SamNavbar></SamNavbar>
         <header className="App-header">
+          
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/login' component={Login} />
             <Route path='/createAccount' component={CreateAccount} />
-            <Route path='/dropboxes' component={Dropboxes} />
-            <Route path='/mySubmissions' component={MySubmissions} />
-            <Route path='/myInfo' component={MyInfo} />
-            <Route path='/newSubmission' component={NewSubmission} />
+            {dropboxes}
+            {mySubmissions}
+            {info}
+            {newSubmission}
           </Switch>
         </header>
       </div>
