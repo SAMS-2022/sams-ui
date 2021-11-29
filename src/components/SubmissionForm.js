@@ -13,12 +13,80 @@ class CredentialsForm extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {dbox: "", 
+        fname: "", 
+        lname: "", 
+        email: "", 
+        title: "", 
+        authors: "", 
+        desc: "", 
+        paper: "",
+        fileBase64: ""};
         this.handleSubmit = this.handleSubmit.bind(this);
-      }
+    }
 
 
     handleSubmit(event) {
       event.preventDefault();
+      console.log(this.state)
+      
+      //get signed key for upload
+
+      var url = "https://ia2067.pythonanywhere.com/submitPaper";
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+      
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            console.log(xhr.response);
+            
+            var responseData = JSON.parse(xhr.response);
+            
+            console.log(responseData);
+
+            
+        }};
+    
+        var fileReader = new FileReader();
+        var base64;
+        
+        fileReader.onload = function(fileLoadedEvent) {
+            base64 = fileLoadedEvent.target.result;
+            // Print data in console
+            console.log("hitting");
+            
+            console.log(base64);
+        };
+        fileReader.readAsDataURL(this.state.paper);
+
+        this.setState({fileBase64: base64});
+        
+
+        var data = JSON.stringify({"username": localStorage.getItem("username"), 
+        "title": this.state.title, "authors": this.state.authors,
+        "contactAuthors": this.state.authors, 
+        "paperName": this.state.title, 
+        "paper": this.state.fileBase64, 
+        "dropbox": this.state.dbox, 
+        "submissionid": "2"});
+        
+        xhr.send(data);
+      
+
+
+
+
+
+
+
+
+
     }
     
     render() {
@@ -30,11 +98,11 @@ class CredentialsForm extends Component {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Select Submission Dropbox</Form.Label>
                 <FloatingLabel controlId="floatingSelect" label="Works with selects">
-                    <Form.Select aria-label="Floating label select example">
+                    <Form.Select aria-label="Floating label select example" onChange={e => this.setState({ dbox: e.target.value })}>
                         <option>Select Dropbox</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
                     </Form.Select>
                 </FloatingLabel>
             </Form.Group>
@@ -43,43 +111,41 @@ class CredentialsForm extends Component {
                 <Form.Label>Name</Form.Label>
                 <Row>
                     <Col>
-                    <Form.Control placeholder="First name" />
+                    <Form.Control placeholder="First name" onChange={e => this.setState({ fname: e.target.value })}/>
                     </Col>
                     <Col>
-                    <Form.Control placeholder="Last name" />
+                    <Form.Control placeholder="Last name" onChange={e => this.setState({ lname: e.target.value })}/>
                     </Col>
                 </Row>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control type="email" placeholder="name@example.com" onChange={e => this.setState({ email: e.target.value })}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Paper Title</Form.Label>
-                <Form.Control type="text" placeholder="Enter paper title" />
+                <Form.Control type="text" placeholder="Enter paper title" onChange={e => this.setState({ title: e.target.value })}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Authors</Form.Label>
-                <Form.Control type="text" placeholder="Enter paper authors" />
+                <Form.Control type="text" placeholder="Enter paper authors" onChange={e => this.setState({ authors: e.target.value })}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Paper Description</Form.Label>
-                <Form.Control as="textarea" rows={3} placeholder="Enter paper description here"/>
+                <Form.Control as="textarea" rows={3} placeholder="Enter paper description here" onChange={e => this.setState({ desc: e.target.value })}/>
             </Form.Group>
             
             <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Upload Paper</Form.Label>
-                <Form.Control type="file" accept="application/pdf,application/docx"/>
+                <Form.Control type="file" accept="application/pdf,application/docx" onChange={e => this.setState({ paper: e.target.files[0]})}/>
             </Form.Group>
 
 
-
-
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                 Submit
             </Button>
             </Form>
