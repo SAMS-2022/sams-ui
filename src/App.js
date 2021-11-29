@@ -12,6 +12,7 @@ import MySubmissions from './screens/MySubmissions';
 import MyInfo from './screens/MyInfo';
 import NewSubmission from './screens/NewSubmission';
 import LoggedOut from './screens/LoggedOut';
+import Submission from './screens/Submission';
 
 class App extends Component {
   
@@ -23,6 +24,10 @@ class App extends Component {
     // localStorage.setItem('role', "default");
   }
 
+  componentDidMount() {
+    document.title = "SAMS 2022";
+  }
+
   render() {
 
     var loggedIn = (localStorage.getItem('loggedIn') == "true") ? true: false;
@@ -30,7 +35,7 @@ class App extends Component {
     var mySubmissions = (loggedIn) ? <Route path='/mySubmissions' component={MySubmissions} />: <Route path='/mySubmissions' component={LoggedOut} />
     var info = (loggedIn) ? (<Route path='/myInfo' component={MyInfo} />): <Route path='/myInfo' component={LoggedOut} />
     var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={NewSubmission} />): <Route path='/newSubmission' component={LoggedOut} />
-
+    var submission = (loggedIn) ? (<Route path='/submission/:submissionId' component={Submission} />): <Route path='/submission/:submissionId' component={LoggedOut} />
     return (
       <div className="App">
         <SamNavbar></SamNavbar>
@@ -44,6 +49,7 @@ class App extends Component {
             {mySubmissions}
             {info}
             {newSubmission}
+            {submission}
           </Switch>
         </header>
       </div>

@@ -29,11 +29,11 @@ class MySubmissions extends Component {
                 <Link to={'/newSubmission'} className="action_btn">Start a new submission</Link>
                 </Button>
               
-              <PreviewCard title="My paper" desc="Submission description" date="10/13/21" buttonText="View Submission"/>
-              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" buttonText="View Submission"/>
-              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" buttonText="View Submission"/>
-              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" buttonText="View Submission"/>
-              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" buttonText="View Submission"/>
+              <PreviewCard title="My paper" desc="Submission description" date="10/13/21" review={"NONE"} buttonText="View Submission"/>
+              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" review={"DONE"} buttonText="View Submission"/>
+              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" review={"NONE"} buttonText="View Submission"/>
+              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" review={"IN"} buttonText="View Submission"/>
+              <PreviewCard title="My other paper" desc="Submission description" date="10/13/21" review={"NONE"} buttonText="View Submission"/>
               </header>
           </div>
         );

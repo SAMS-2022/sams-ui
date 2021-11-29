@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
-import PreviewCard from "../components/PreviewCard";
-import {
-    Link
-  } from "react-router-dom";
-import SubmissionForm from "../components/SubmissionForm";
 
-class NewSubmission extends Component {
+
+class Submission extends Component {
 
     constructor(props) {
         super(props);
@@ -19,20 +15,20 @@ class NewSubmission extends Component {
       event.preventDefault();
     }
     
-
     render() {
 
-        
+        var submissionId = window.location.pathname.split("/")[2];
+        console.log(submissionId);
         return (
           <div className="App">
               <header className="App-header">
-              <pageTitle>New Submission</pageTitle>
-              <pageDesc>Fill out the information below!</pageDesc>
-              <SubmissionForm></SubmissionForm>
+              <pageTitle>Submission {submissionId}</pageTitle>
+              <pageDesc>View your submission below!</pageDesc>
+              {/* <img src={"data:image/jpeg;base64," + this.state.data} /> */}
               </header>
           </div>
         );
       }
   }
   
-  export default NewSubmission;
+  export default Submission;

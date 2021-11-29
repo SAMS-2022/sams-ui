@@ -26,6 +26,10 @@ class PreviewCard extends Component {
             </Card.Text>
             <Card.Title>{this.props.desc}</Card.Title>
             <Card.Title>{this.props.date}</Card.Title>
+            <Card.Title style={{ color: 'rgb(255, 118, 117)' }}>{(this.props.review === "NONE") ? "Status: Review Not Started": ""}</Card.Title>
+            <Card.Title style={{ color: 'rgb(253, 203, 110)' }}>{(this.props.review === "IN") ? "Status: In Review": ""}</Card.Title>
+            <Card.Title style={{ color: 'rgb(85, 239, 196)' }}>{(this.props.review === "DONE") ? "Status: Review Complete": ""}</Card.Title>
+    
             <Button variant="primary">{this.props.buttonText}</Button>
         </Card.Body>
         </Card>

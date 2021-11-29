@@ -8,6 +8,8 @@ import { Component } from 'react';
 import {
   Link
 } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faFilePdf, faFileUpload, faPlusSquare, faUpload } from '@fortawesome/free-solid-svg-icons'
 
 class SamNavbar extends Component {
 
@@ -28,6 +30,8 @@ class SamNavbar extends Component {
 
     render() {
 
+      const element = <FontAwesomeIcon icon={faPlusSquare} />
+
       var loggedIn = localStorage.getItem("loggedIn");
       var role = localStorage.getItem("role");
 
@@ -46,6 +50,7 @@ class SamNavbar extends Component {
                 <Nav className="me-auto">
                 <Nav.Link> <Link to={'/dropboxes'} className="nav-link">Submission Dropboxes</Link></Nav.Link>
                 <Nav.Link> <Link to={'/mySubmissions'} className="nav-link">My Submissions</Link></Nav.Link>
+                <Nav.Link > <Link to={'/newSubmission'} className="nav-link" >{element}</Link></Nav.Link>
                   <NavDropdown title="My Profile" id="basic-nav-dropdown" className="nav-link">
                     <NavDropdown.Item> <Link to={'/myInfo'} className="nav-link">Profile Information</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
