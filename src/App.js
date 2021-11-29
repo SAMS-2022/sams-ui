@@ -16,7 +16,6 @@ import Submission from './screens/Submission';
 
 class App extends Component {
   
-  
   constructor(props) {
     super(props);
     // localStorage.setItem('loggedIn', false);
@@ -56,7 +55,6 @@ class App extends Component {
     );
   }
 }
-
 
 
 export default App;

@@ -27,10 +27,10 @@ class CredentialsForm extends Component {
         
     }
 
- 
-
     sendRequest(){
-        var url = "https://ia2067.pythonanywhere.com/submitPaper";
+        
+        //var url = "https://ia2067.pythonanywhere.com/submitPaper";
+        var url = "http://127.0.0.1:5000/submitPaper";
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url);
         xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
@@ -118,14 +118,15 @@ class CredentialsForm extends Component {
             
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{ fontSize: '15px'}}>Name</Form.Label>
-                <Row>
-                    <Col>
+               
+                    
                     <Form.Control placeholder="First name" onChange={e => this.setState({ fname: e.target.value })}/>
-                    </Col>
-                    <Col>
-                    <Form.Control placeholder="Last name" onChange={e => this.setState({ lname: e.target.value })}/>
-                    </Col>
-                </Row>
+  
+                
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Control placeholder="Last name" onChange={e => this.setState({ lname: e.target.value })}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
