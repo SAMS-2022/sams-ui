@@ -15,6 +15,8 @@ import LoggedOut from './screens/LoggedOut';
 import Submission from './screens/Submission';
 import Submissions from './screens/Submissions';
 import Reviews from './screens/Reviews';
+import Deadlines from './screens/Deadlines';
+import Notifications from './screens/Notifications';
 
 class App extends Component {
   
@@ -39,6 +41,9 @@ class App extends Component {
     var submission = (loggedIn) ? (<Route path='/submission/:submissionId' component={Submission} />): <Route path='/submission/:submissionId' component={LoggedOut} />
     var submissions = (loggedIn) ? (<Route path='/submissions' component={Submissions} />): <Route path='/submissions' component={LoggedOut} />
     var reviews = (loggedIn) ? (<Route path='/reviews' component={Reviews} />): <Route path='/reviews' component={LoggedOut} />
+    var deadlines = (loggedIn) ? (<Route path='/notifications' component={Notifications} />): <Route path='/notifications' component={LoggedOut} />
+    var notifications = (loggedIn) ? (<Route path='/deadlines' component={Deadlines} />): <Route path='/deadlines' component={LoggedOut} />
+
     return (
       <div className="App">
         <SamNavbar></SamNavbar>
@@ -54,6 +59,9 @@ class App extends Component {
             {newSubmission}
             {submission}
             {submissions}
+            {reviews}
+            {notifications}
+            {deadlines}
           </Switch>
         </header>
       </div>

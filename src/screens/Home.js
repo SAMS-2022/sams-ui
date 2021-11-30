@@ -69,6 +69,22 @@ class Home extends Component {
       </div>
     );
       }
+      if(localStorage.getItem("role")=="Admin"){
+        return (
+          
+          <div className="App">
+          <header className="App-header">
+              
+            <homeTitle>Welcome to SAMS 2022</homeTitle>
+            <homeSub>Configure SAMS 2022</homeSub>
+            <div className="action_btn">
+              <Button><Link to={'/deadlines'} className="action_btn">Change Deadlines</Link></Button>
+              <Button><Link to={'/notifications'} className="action_btn">Change Notifications</Link></Button>
+            </div>
+          </header>
+        </div>
+      );
+        }
   
   
   else
