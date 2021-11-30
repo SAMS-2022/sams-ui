@@ -23,81 +23,64 @@ class CredentialsForm extends Component {
         paper: "",
         fileBase64: ""};
         this.handleSubmit = this.handleSubmit.bind(this);
-        
-        
     }
 
     sendRequest(){
         
-        //var url = "https://ia2067.pythonanywhere.com/submitPaper";
-        var url = "http://127.0.0.1:5000/submitPaper";
+        var url = "https://ia2067.pythonanywhere.com/submitPaper";
+        //var url = "http://127.0.0.1:5000/submitPaper";
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url);
         xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-          xhr.setRequestHeader("Accept", "application/json");
-          xhr.setRequestHeader("Content-Type", "application/json");
-  
-          var data = JSON.stringify({"username": localStorage.getItem("username"), 
-          "title": this.state.title, "authors": this.state.authors,
-          "contactAuthors": this.state.authors, 
-          "paperName": this.state.title, 
-          "paper": this.state.fileBase64, 
-          "dropbox": this.state.dbox, 
-          "submissionid": "2"});
-          console.log(data)
-          
-          xhr.send(data);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        
+        var data = JSON.stringify({"username": localStorage.getItem("username"), 
+        "title": this.state.title, "authors": this.state.authors,
+        "contactAuthors": this.state.authors, 
+        "paperName": this.state.title, 
+        "paper": this.state.fileBase64, 
+        "dropbox": this.state.dbox, 
+        "submissionid": String(Math.floor(Math.random() * 100000))});
+        console.log(data)
+        
+        xhr.send(data);
   
         
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-              console.log(xhr.status);
-              console.log(xhr.responseText);
-              console.log(xhr.response);
-              var responseData = JSON.parse(xhr.response);
-              console.log(responseData);
-              if(responseData.success == true){
-                alert("Paper Submitted!")
-                
-                
-                //temp
-                var currURL = window.location.href;
-                window.location.assign(currURL.replace("/newSubmission","/mySubmissions")); 
-
-              }
-  
-          }};
-      
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            console.log(xhr.response);
+            var responseData = JSON.parse(xhr.response);
+            console.log(responseData);
+            if(responseData.success == true){
+            alert("Paper Submitted!")
+            
+            //temp
+            var currURL = window.location.href;
+            window.location.assign(currURL.replace("/newSubmission","/mySubmissions")); 
+            }
+        }};
     }
 
 
     handleSubmit(event) {
-      event.preventDefault();
+        event.preventDefault();
       
-
-      var fileReader = new FileReader();
+        var fileReader = new FileReader();
         var base64;
         
         fileReader.onload = (fileLoadedEvent) => {
-            base64 = fileLoadedEvent.target.result;
-            // Print data in console
-            this.setState({fileBase64: base64});
-            console.log(base64);
-            this.setState({ fileBase64: base64}, () => 
-    this.sendRequest());
-            
-        };
+        base64 = fileLoadedEvent.target.result;
+        // Print data in console
+        this.setState({fileBase64: base64});
+        console.log(base64);
+        this.setState({ fileBase64: base64}, () => 
+        this.sendRequest());
+                
+            };
         fileReader.readAsDataURL(this.state.paper);
-      
-      //get signed key for upload
-
-        
-
-        //console.log(base64)
-        //this.setState({fileBase64: base64});
-        
-
-
     }
     
     render() {
@@ -112,6 +95,7 @@ class CredentialsForm extends Component {
                     <Form.Select onChange={e => this.setState({ dbox: e.target.value })}>
                         <option>Select Dropbox</option>
                         <option value="First Box">First Box</option>
+                        <option value="Second Box">Second Box</option>
                     </Form.Select>
                 </FloatingLabel>
             </Form.Group>

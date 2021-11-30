@@ -28,6 +28,14 @@
   text-decoration: none;
 }
 
+.action_btn_no_sp {
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+  color: white;
+  text-decoration: none;
+}
+
 homeTitle{
   font-family: 'Roboto Thin', sans-serif;
   font-size: 80px;

@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
     // localStorage.setItem('loggedIn', false);
     // localStorage.setItem('username', "");
-    // localStorage.setItem('role', "default");
+    // localStorage.setItem('currPapers', "");
   }
 
   componentDidMount() {
