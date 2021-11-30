@@ -95,9 +95,8 @@ class SamNavbar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-              <Nav.Link href="#home">Submission Dropboxes</Nav.Link>
-              <Nav.Link href="#home">My Reviews</Nav.Link>
-                <NavDropdown title="My Profile" id="basic-nav-dropdown">
+              <Nav.Link> <Link to={'/reviews'} className="nav-link">Submissions To Review</Link></Nav.Link>
+                <NavDropdown title="My Profile" id="basic-nav-dropdown" className="nav-link">
                 <NavDropdown.Item> <Link to={'/myInfo'} className="nav-link">Profile Information</Link></NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={this.handleLogOut}><Link to={'/'} className="nav-link">Log Out</Link></NavDropdown.Item>

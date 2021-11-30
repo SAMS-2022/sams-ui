@@ -51,7 +51,27 @@ class Home extends Component {
           </header>
         </div>
       );
-  } else
+  } 
+  else{
+    if(localStorage.getItem("role")=="PCM"){
+      return (
+        
+        <div className="App">
+         
+        <header className="App-header">
+            
+          <homeTitle>Welcome to SAMS 2022</homeTitle>
+          <homeSub>Start reviewing submissions!</homeSub>
+          <div className="action_btn">
+            <Button><Link to={'/reviews'} className="action_btn">Review Submissions</Link></Button>
+          </div>
+        </header>
+      </div>
+    );
+      }
+  
+  
+  else
       
         //DASHBOARD
         return (
@@ -70,7 +90,7 @@ class Home extends Component {
         );
     }
   }
-}
+    }}
   export default Home;
 
 
