@@ -13,6 +13,7 @@ class PreviewCard extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {title: ""}
 
        
         
@@ -24,16 +25,29 @@ class PreviewCard extends Component {
         
       localStorage.setItem("subID", JSON.stringify(this.props.subID));
 
-      if(this.props.type === "SUB"){
+      this.setState({title: this.props.title})
 
-        //temp
-        //var currURL = window.location.href;
-        //window.location.assign(currURL.replace("/mySubmissions","/submission/"+String(this.props.subID)));
+      localStorage.setItem("selectedDrop", JSON.stringify(this.props.title));
 
-      }
+     
     }
     
     render() {
+
+
+      if(this.props.type === "SUB"){
+          var button = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
+            pathname: "/submission/"+String(this.props.subID),
+            papers: this.props.papers
+          }}> {this.props.buttonText} </Link></Button>)
+      }else{
+        console.log(this.state.title)
+        
+        var button = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
+          pathname: "/newSubmission/",
+          title: this.state.title
+        }}> {this.props.buttonText} </Link></Button>)
+      }
 
      
       return (
@@ -49,10 +63,7 @@ class PreviewCard extends Component {
             <Card.Title style={{ color: 'rgb(253, 203, 110)' }}>{(this.props.review === "IN") ? "Status: In Review": ""}</Card.Title>
             <Card.Title style={{ color: 'rgb(85, 239, 196)' }}>{(this.props.review === "DONE") ? "Status: Review Complete": ""}</Card.Title>
             {/* <Button onClick={this.handleSubmit} variant="primary">{this.props.buttonText}</Button> */}
-            <Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
-  pathname: "/submission/"+String(this.props.subID),
-  papers: this.props.papers
-}}> {this.props.buttonText} </Link></Button>
+            {button}
             
         </Card.Body>
         </Card>

@@ -84,12 +84,19 @@ class CredentialsForm extends Component {
     }
     
     render() {
-      return (
-        <div >
 
-        <Form style={{ width: '30rem'}}>
-        
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        var title = JSON.parse(localStorage.getItem("selectedDrop"));
+        console.log(title)
+
+
+        var select = (title) ? (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label style={{ fontSize: '15px'}} >Select Submission Dropbox</Form.Label>
+        <FloatingLabel controlId="floatingSelect" >
+            <Form.Select onChange={e => this.setState({ dbox: {title} })}>
+                <option value={title}>{title}</option>
+            </Form.Select>
+        </FloatingLabel>
+    </Form.Group>) : (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{ fontSize: '15px'}} >Select Submission Dropbox</Form.Label>
                 <FloatingLabel controlId="floatingSelect" >
                     <Form.Select onChange={e => this.setState({ dbox: e.target.value })}>
@@ -98,7 +105,14 @@ class CredentialsForm extends Component {
                         <option value="Second Box">Second Box</option>
                     </Form.Select>
                 </FloatingLabel>
-            </Form.Group>
+            </Form.Group>)
+
+      return (
+        <div >
+
+        <Form style={{ width: '30rem'}}>
+        
+            {select}
             
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label style={{ fontSize: '15px'}}>Name</Form.Label>
