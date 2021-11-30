@@ -36,6 +36,23 @@ class Home extends Component {
       );
     }
     else{
+      if(localStorage.getItem("role")=="PCC"){
+        return (
+          
+          <div className="App">
+           
+          <header className="App-header">
+              
+            <homeTitle>Welcome to SAMS 2022</homeTitle>
+            <homeSub>Start by assigning papers to reviewers!</homeSub>
+            <div className="action_btn">
+              <Button><Link to={'/submissions'} className="action_btn">View All Submissions</Link></Button>
+            </div>
+          </header>
+        </div>
+      );
+  } else
+      
         //DASHBOARD
         return (
           

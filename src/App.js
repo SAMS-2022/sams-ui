@@ -13,6 +13,7 @@ import MyInfo from './screens/MyInfo';
 import NewSubmission from './screens/NewSubmission';
 import LoggedOut from './screens/LoggedOut';
 import Submission from './screens/Submission';
+import Submissions from './screens/Submissions';
 
 class App extends Component {
   
@@ -35,6 +36,7 @@ class App extends Component {
     var info = (loggedIn) ? (<Route path='/myInfo' component={MyInfo} />): <Route path='/myInfo' component={LoggedOut} />
     var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={NewSubmission} />): <Route path='/newSubmission' component={LoggedOut} />
     var submission = (loggedIn) ? (<Route path='/submission/:submissionId' component={Submission} />): <Route path='/submission/:submissionId' component={LoggedOut} />
+    var submissions = (loggedIn) ? (<Route path='/submissions' component={Submissions} />): <Route path='/submissions' component={LoggedOut} />
     return (
       <div className="App">
         <SamNavbar></SamNavbar>
@@ -49,6 +51,7 @@ class App extends Component {
             {info}
             {newSubmission}
             {submission}
+            {submissions}
           </Switch>
         </header>
       </div>

@@ -62,6 +62,29 @@ class SamNavbar extends Component {
           </Navbar>
           );
       }
+      else if(role=="PCC"){
+    
+        return (
+          <Navbar bg="light" expand="lg">
+          <Container>
+            <Navbar.Brand><Link to={'/'} className="nav-link">SAMS 2022</Link></Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+              <Nav.Link> <Link to={'/submissions'} className="nav-link">Submissions</Link></Nav.Link>
+                <NavDropdown title="My Profile" id="basic-nav-dropdown" className="nav-link">
+                <NavDropdown.Item> <Link to={'/myInfo'} className="nav-link">Profile Information</Link></NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={this.handleLogOut}><Link to={'/'} className="nav-link">Log Out</Link></NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        );
+      
+      }
+    
 
       else if(role=="PCM"){
     
