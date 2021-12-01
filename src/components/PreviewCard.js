@@ -35,7 +35,7 @@ class PreviewCard extends Component {
 
         var currURL = window.location.pathname;
         console.log(currURL)
-       if(currURL == "/mySubmissions"){
+       if(currURL == "/mySubmissions" || currURL == "/submissions"){
         var view = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
           pathname: "/submission/"+String(this.props.subID),
           papers: this.props.papers
@@ -71,8 +71,10 @@ class PreviewCard extends Component {
           <Card.Title style={{ color: 'rgb(253, 203, 110)' }}>{(this.props.review === "IN") ? "Status: In Review": ""}</Card.Title>
           <Card.Title style={{ color: 'rgb(85, 239, 196)' }}>{(this.props.review === "DONE") ? "Status: Review Complete": ""}</Card.Title>
           {/* <Button onClick={this.handleSubmit} variant="primary">{this.props.buttonText}</Button> */}
-          {view}
-          {review}
+          <div className="action_btn_dual">{view}</div>
+          <div className="action_btn_dual">{review}</div>
+          
+          
           
       </Card.Body>
       </Card>) : (<Card style={{ width: '60rem', color: "black" }}>

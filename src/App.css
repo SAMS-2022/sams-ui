@@ -28,6 +28,19 @@
   text-decoration: none;
 }
 
+
+.action_btn_dual {
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 120px;
+  color: white;
+  text-decoration: none;
+}
+
 .action_btn_no_sp {
   width: 200px;
   margin: 0 auto;

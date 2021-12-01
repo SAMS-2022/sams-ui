@@ -26,6 +26,7 @@ class Assign extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.getUsers = this.getUsers.bind(this);
      
         
         this.state={paper: null, papers: [], subID: null, users: [], sUsers:[], selectedUsers: []};
@@ -35,6 +36,7 @@ class Assign extends Component {
 
       componentDidMount = () => {
         this.sendRequest();
+        this.getUsers();
     
      }
 
@@ -103,6 +105,17 @@ class Assign extends Component {
 
           }
 
+  
+
+    getUsers(){
+      var accountsRef = firebase.database().ref('Accounts');
+      accountsRef.once('value').then(snapshot => {
+      // snapshot.val() is the dictionary with all your keys/values from the '/store' path
+      console.log(snapshot.val())
+      this.setState({users: snapshot.val()});
+      })
+    }
+
     handleSubmit(event) {
       event.preventDefault();
     }
@@ -114,13 +127,13 @@ class Assign extends Component {
         this.setState({ selectedUsers: newVals });
     }
 
+    
+    
+
 
     render() {
 
-      
-      
-
-        console.log(this.state.selectedUsers)
+        console.log(this.state)
 
         var paper = (this.state.paper) ? (<iframe frameborder="0" scrolling="no"
         width="640" height="680"
@@ -131,23 +144,27 @@ class Assign extends Component {
   
         const animatedComponents = makeAnimated();
 
-        var accountsRef = firebase.database().ref('/Accounts');
-      accountsRef.once('value').then(snapshot => {
-        // snapshot.val() is the dictionary with all your keys/values from the '/store' path
-        var users = snapshot.val();
-        console.log(users)
-        var li = []
-        for(var user in users){
-          //var user = this.state.users[user];
-          console.log(user)
+
+
+
+
+
+
+
+
+        
+      //   var li = []
+      //   for(var user in users){
+      //     //var user = this.state.users[user];
+      //     console.log(user)
           
-            li.push({value: user, label: user})
+      //       li.push({value: user, label: user})
         
           
-        }
-          console.log(li)
-      }
-      )
+      //   }
+      //     console.log(li)
+      // }
+      // )
 
       
     
@@ -206,7 +223,7 @@ theme={(theme) => ({
 />): (<pageDesc>Loading...</pageDesc>)
 
           
-console.log(this.state.users)
+console.log(this.state)
 
           
 
