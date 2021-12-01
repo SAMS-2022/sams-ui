@@ -63,7 +63,7 @@ class Home extends Component {
           <homeTitle>Welcome to SAMS 2022</homeTitle>
           <homeSub>Start reviewing submissions!</homeSub>
           <div className="action_btn">
-            <Button><Link to={'/reviews'} className="action_btn">Review Submissions</Link></Button>
+            <Button><Link to={'/newReviews'} className="action_btn">Review Submissions</Link></Button>
           </div>
         </header>
       </div>

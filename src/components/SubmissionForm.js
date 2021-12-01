@@ -40,7 +40,7 @@ class CredentialsForm extends Component {
         "contactAuthors": this.state.authors, 
         "paperName": this.state.title, 
         "paper": this.state.fileBase64, 
-        "dropbox": this.state.dbox, 
+        "dropbox": "First Dropbox", 
         "submissionid": String(Math.floor(Math.random() * 100000))});
         console.log(data)
         

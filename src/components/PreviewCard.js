@@ -26,7 +26,7 @@ class PreviewCard extends Component {
 
       this.setState({title: this.props.title})
       
-      localStorage.setItem("selectedDrop", JSON.stringify(this.props.db));
+      localStorage.setItem("selectedDrop", JSON.stringify("First Dropbox"));
      
     }
     
@@ -35,7 +35,7 @@ class PreviewCard extends Component {
 
         var currURL = window.location.pathname;
         console.log(currURL)
-       if(currURL == "/mySubmissions/" || currURL == "/submissions"){
+       if(currURL == "/mySubmissions/" || currURL == "/submissions" || currURL == "/submissions/" || currURL == "/mySubmissions"){
         var view = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
           pathname: "/submission/"+String(this.props.subID),
           papers: this.props.papers
@@ -50,7 +50,6 @@ class PreviewCard extends Component {
       }
         
       
-
       var review = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
         pathname: "/assign",
         papers: this.props.papers

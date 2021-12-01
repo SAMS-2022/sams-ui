@@ -18,6 +18,9 @@ import Assign from './screens/Assign';
 import Deadlines from './screens/Deadlines';
 import Notifications from './screens/Notifications';
 import AssignSuccess from './screens/AssignSuccess';
+import ReviewSuccess from './screens/ReviewSuccess';
+import Reviews from './screens/Reviews';
+import NewReviews from './screens/NewReviews';
 
 class App extends Component {
   
@@ -45,6 +48,10 @@ class App extends Component {
     var deadlines = (loggedIn) ? (<Route path='/notifications' component={Notifications} />): <Route path='/notifications' component={LoggedOut} />
     var notifications = (loggedIn) ? (<Route path='/deadlines' component={Deadlines} />): <Route path='/deadlines' component={LoggedOut} />
     var assignSuccess = (loggedIn) ? (<Route path='/assignSuccess' component={AssignSuccess} />): <Route path='/assignSuccess' component={LoggedOut} />
+    var reviewSuccess = (loggedIn) ? (<Route path='/reviewSuccess' component={ReviewSuccess} />): <Route path='/reviewSuccess' component={LoggedOut} />
+    var reviews = (loggedIn) ? (<Route path='/reviews' component={Reviews} />): <Route path='/reviews' component={LoggedOut} />
+    var newReviews = (loggedIn) ? (<Route path='/newReviews' component={NewReviews} />): <Route path='/newReviews' component={LoggedOut} />
+
 
     return (
       <div className="App">
@@ -65,6 +72,9 @@ class App extends Component {
             {notifications}
             {deadlines}
             {assignSuccess}
+            {reviewSuccess}
+            {reviews}
+            {newReviews}
           </Switch>
         </header>
       </div>
