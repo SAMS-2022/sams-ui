@@ -41,6 +41,7 @@ class SamNavbar extends Component {
 
       if(loggedIn=="true"){
         if(role=="Submitter"){
+          localStorage.setItem("selectedDrop", "First Dropbox");
           return (
             <Navbar bg="light" expand="lg">
             <Container>

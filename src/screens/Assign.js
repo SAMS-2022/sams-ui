@@ -25,18 +25,14 @@ class Assign extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
-        this.getUsers = this.getUsers.bind(this);
-     
         
+     
         this.state={paper: null, papers: [], subID: null, users: [], sUsers:[], selectedUsers: []};
 
-        
       }
 
       componentDidMount = () => {
         this.sendRequest();
-        this.getUsers();
     
      }
 
@@ -105,27 +101,19 @@ class Assign extends Component {
 
           }
 
+
+
+          
+
   
 
-    getUsers(){
-      var accountsRef = firebase.database().ref('Accounts');
-      accountsRef.once('value').then(snapshot => {
-      // snapshot.val() is the dictionary with all your keys/values from the '/store' path
-      console.log(snapshot.val())
-      this.setState({users: snapshot.val()});
-      })
-    }
+
 
     handleSubmit(event) {
       event.preventDefault();
     }
 
-    handleSelect(event) {
-        var vals = this.state.selectedUsers;
-        console.log(event);
-        var newVals = vals.push(event.value)
-        this.setState({ selectedUsers: newVals });
-    }
+    
 
     
     
@@ -135,7 +123,7 @@ class Assign extends Component {
 
         console.log(this.state)
 
-        var paper = (this.state.paper) ? (<iframe frameborder="0" scrolling="no"
+        var paper = (this.state.paper) ? (<iframe className="assign_space" frameborder="0" scrolling="no"
         width="640" height="680"
         src={this.state.paper.paper}  type="application/pdf">
         </iframe>) : (<pageDesc>Loading Paper</pageDesc>)
@@ -166,8 +154,6 @@ class Assign extends Component {
       // }
       // )
 
-      
-    
 
 
       const styles = {
@@ -203,7 +189,7 @@ closeMenuOnSelect={false}
 components={animatedComponents}
 isMulti
 placeholder="Select Submitters to Assign To"
-options={this.state.users}
+options={[{value: "testpcm", label: "testpcm"}]}
     styles={styles}
 theme={(theme) => ({
   ...theme,
@@ -232,18 +218,15 @@ console.log(this.state)
           <div className="App">
               <header className="App-header">
               {title}
-              <pageDesc>Assign this submission below!</pageDesc>
+              <pageDesc>Assign this submission below to a PCM!</pageDesc>
               
-              
+
+              <div className="App-header.assign_space">
               {selectUser}
-  
-
-
-              <div></div>
               {paper}
-              <div className="action_btn">
-                <Button><Link to={'/dropboxes'} className="action_btn">Confirm Assignment</Link></Button>
-              </div>
+              
+                </div>
+                <Button><Link to={'/assignSuccess'} className="action_btn">Confirm Assignment</Link></Button>
               </header>
               
           </div>

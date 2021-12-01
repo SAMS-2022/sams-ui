@@ -35,7 +35,7 @@ class PreviewCard extends Component {
 
         var currURL = window.location.pathname;
         console.log(currURL)
-       if(currURL == "/mySubmissions" || currURL == "/submissions"){
+       if(currURL == "/mySubmissions/" || currURL == "/submissions"){
         var view = (<Button  onClick={this.handleSubmit} variant="primary"> <Link className="action_btn_no_sp" to={{
           pathname: "/submission/"+String(this.props.subID),
           papers: this.props.papers

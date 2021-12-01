@@ -17,6 +17,7 @@ import Submissions from './screens/Submissions';
 import Assign from './screens/Assign';
 import Deadlines from './screens/Deadlines';
 import Notifications from './screens/Notifications';
+import AssignSuccess from './screens/AssignSuccess';
 
 class App extends Component {
   
@@ -43,6 +44,7 @@ class App extends Component {
     var assign = (loggedIn) ? (<Route path='/assign' component={Assign} />): <Route path='/assign' component={LoggedOut} />
     var deadlines = (loggedIn) ? (<Route path='/notifications' component={Notifications} />): <Route path='/notifications' component={LoggedOut} />
     var notifications = (loggedIn) ? (<Route path='/deadlines' component={Deadlines} />): <Route path='/deadlines' component={LoggedOut} />
+    var assignSuccess = (loggedIn) ? (<Route path='/assignSuccess' component={AssignSuccess} />): <Route path='/assignSuccess' component={LoggedOut} />
 
     return (
       <div className="App">
@@ -62,6 +64,7 @@ class App extends Component {
             {assign}
             {notifications}
             {deadlines}
+            {assignSuccess}
           </Switch>
         </header>
       </div>

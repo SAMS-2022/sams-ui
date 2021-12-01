@@ -23,9 +23,10 @@
   margin: 0 auto;
   display: inline;
   padding-bottom: 50px;
-  margin-bottom: 120px;
+  
   color: white;
   text-decoration: none;
+  padding-top: 50px;
 }
 
 
@@ -39,6 +40,13 @@
   margin-bottom: 120px;
   color: white;
   text-decoration: none;
+}
+
+
+.assign_space {
+
+  padding-bottom: 50px;
+  padding-top: 60px;
 }
 
 .action_btn_no_sp {
