@@ -78,8 +78,7 @@ class Home extends Component {
             <homeTitle>Welcome to SAMS 2022</homeTitle>
             <homeSub>Configure SAMS 2022</homeSub>
             <div className="action_btn">
-              <Button><Link to={'/deadlines'} className="action_btn">Change Deadlines</Link></Button>
-              <Button><Link to={'/notifications'} className="action_btn">Change Notifications</Link></Button>
+              <Button><Link to={'/config'} className="action_btn">Edit SAMS Config</Link></Button>
             </div>
           </header>
         </div>

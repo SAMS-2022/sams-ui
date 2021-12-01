@@ -15,8 +15,7 @@ import LoggedOut from './screens/LoggedOut';
 import Submission from './screens/Submission';
 import Submissions from './screens/Submissions';
 import Assign from './screens/Assign';
-import Deadlines from './screens/Deadlines';
-import Notifications from './screens/Notifications';
+import Config from './screens/Config';
 import AssignSuccess from './screens/AssignSuccess';
 import ReviewSuccess from './screens/ReviewSuccess';
 import Reviews from './screens/Reviews';
@@ -45,8 +44,7 @@ class App extends Component {
     var submission = (loggedIn) ? (<Route path='/submission/:submissionId' component={Submission} />): <Route path='/submission/:submissionId' component={LoggedOut} />
     var submissions = (loggedIn) ? (<Route path='/submissions' component={Submissions} />): <Route path='/submissions' component={LoggedOut} />
     var assign = (loggedIn) ? (<Route path='/assign' component={Assign} />): <Route path='/assign' component={LoggedOut} />
-    var deadlines = (loggedIn) ? (<Route path='/notifications' component={Notifications} />): <Route path='/notifications' component={LoggedOut} />
-    var notifications = (loggedIn) ? (<Route path='/deadlines' component={Deadlines} />): <Route path='/deadlines' component={LoggedOut} />
+    var config = (loggedIn) ? (<Route path='/config' component={Config} />): <Route path='/config' component={LoggedOut} />
     var assignSuccess = (loggedIn) ? (<Route path='/assignSuccess' component={AssignSuccess} />): <Route path='/assignSuccess' component={LoggedOut} />
     var reviewSuccess = (loggedIn) ? (<Route path='/reviewSuccess' component={ReviewSuccess} />): <Route path='/reviewSuccess' component={LoggedOut} />
     var reviews = (loggedIn) ? (<Route path='/reviews' component={Reviews} />): <Route path='/reviews' component={LoggedOut} />
@@ -69,8 +67,7 @@ class App extends Component {
             {submission}
             {submissions}
             {assign}
-            {notifications}
-            {deadlines}
+            {config}
             {assignSuccess}
             {reviewSuccess}
             {reviews}

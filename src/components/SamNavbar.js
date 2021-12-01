@@ -117,8 +117,7 @@ class SamNavbar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-              <Nav.Link> <Link to={'/deadlines'} className="nav-link">Deadlines</Link></Nav.Link>
-              <Nav.Link> <Link to={'/notifications'} className="nav-link">Notifications</Link></Nav.Link>
+              <Nav.Link> <Link to={'/config'} className="nav-link">Admin Settings</Link></Nav.Link>
                 <NavDropdown title="My Profile" id="basic-nav-dropdown" className="nav-link">
                 <NavDropdown.Item> <Link to={'/myInfo'} className="nav-link">Profile Information</Link></NavDropdown.Item>
                   <NavDropdown.Divider />
