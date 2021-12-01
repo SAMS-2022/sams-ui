@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import {
     Link
   } from "react-router-dom";
+  import Spinner from "react-bootstrap/Spinner";
 
 
 class MySubmissions extends Component {
@@ -81,7 +82,15 @@ class MySubmissions extends Component {
       
 
       //review -> NONE, IN, DONE
-      var load = (<div><PreviewCard type={"SUB"} title={"Loading Submission"} subID={""} desc={""} papers={""} buttonText="Loading"/><PreviewCard type={"SUB"} title={"Loading Submission"} subID={""} desc={""} papers={""} buttonText="Loading"/><PreviewCard type={"SUB"} title={"Loading Submission"} subID={""} desc={""} papers={""} buttonText="Loading"/></div>);
+
+      var load = (
+        <div>
+      <pageDesc>Updating your submissions </pageDesc>  
+    <Spinner size="lg" animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner></div>);
+
+
 
       var submissions = this.state.submissions.reverse().map((sub, i) => {
         return( (<PreviewCard type={"SUB"} title={sub["title"]} subID={sub["subID"]} desc={sub["author"]} papers={sub["papers"]} buttonText="View Submission"/>))

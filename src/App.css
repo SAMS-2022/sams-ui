@@ -59,3 +59,8 @@ homeSub{
   padding-bottom: 50px;
   display: flex;
 }
+
+/* over write css in react-select module */
+.Select__menu-list {
+  max-height: 20px !important;
+}

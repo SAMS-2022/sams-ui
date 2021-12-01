@@ -3,27 +3,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import { usePdf } from 'react-pdf-js';
 import Form from "react-bootstrap/Form";
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import {
+  Link
+} from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
+// Import the functions you need from the SDKs you need
+
+import firebase from './Firebase';
+
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
+// import { MDBSelect } from "mdbreact";
 
-class Submission extends Component {
+
+class Assign extends Component {
 
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
-        this.state={paper: null, papers: [], subID: null};
-
-        //this.state = {version: 0, papers: []}
-
+        this.handleSelect = this.handleSelect.bind(this);
+     
         
+        this.state={paper: null, papers: [], subID: null, users: [], sUsers:[], selectedUsers: []};
+
         
       }
 
-      componentDidMount() {
+      componentDidMount = () => {
         this.sendRequest();
     
      }
+
 
       sendRequest(){
 
@@ -64,20 +78,15 @@ class Submission extends Component {
                       console.log(dropbox);
                         for(var sub in subs){
                             console.log(this.state.papers)
-                            
                                 console.log(sub);
                                 var submission = {"title": subs[sub].title,
                                 "author": subs[sub].authors,
                                 "papers": subs[sub].papers,
                                 "subID": subs[sub].submissionID,
                                 "submitter": subs[sub].submissionID};
-                                
-                                
-                                
+                              
                                 
                                 subss.push(submission);
-                            
-                            
                             
                         }
                     }
@@ -91,38 +100,27 @@ class Submission extends Component {
           var paper = JSON.parse(localStorage.getItem("currPapers"))[0];
           console.log(paper)
           this.setState({paper: paper})
-  
-        //   var s = null;
-        //     for(var sub in subss){
-        //         console.log(sub)
-        //         if(sub.subID == this.state.subID){
-        //             this.setState({paper: this.state.papers[0]})
-        //             console.log("submission", this.state)
-        //         }
-        //     }
-            
-
 
           }
-
 
     handleSubmit(event) {
       event.preventDefault();
     }
-    
+
+    handleSelect(event) {
+        var vals = this.state.selectedUsers;
+        console.log(event);
+        var newVals = vals.push(event.value)
+        this.setState({ selectedUsers: newVals });
+    }
+
+
     render() {
 
-        
-        
+      
+      
 
-        console.log(this.state.paper)
-
-        
-        // let optionsRender = this.state.papers.map((pap, i) => {
-        //     console.log(pap);
-        //     return(<option value={String(pap.title)}>{String(pap.title)}</option>)
-        // });
-        // console.log(this.props.location.papers)
+        console.log(this.state.selectedUsers)
 
         var paper = (this.state.paper) ? (<iframe frameborder="0" scrolling="no"
         width="640" height="680"
@@ -130,30 +128,105 @@ class Submission extends Component {
         </iframe>) : (<pageDesc>Loading Paper</pageDesc>)
 
         var title = (this.state.paper) ? (<pageTitle>Title: {this.state.paper.name}</pageTitle>) : (<pageTitle>Loading Submission</pageTitle>)
+  
+        const animatedComponents = makeAnimated();
+
+        var accountsRef = firebase.database().ref('/Accounts');
+      accountsRef.once('value').then(snapshot => {
+        // snapshot.val() is the dictionary with all your keys/values from the '/store' path
+        var users = snapshot.val();
+        console.log(users)
+        var li = []
+        for(var user in users){
+          //var user = this.state.users[user];
+          console.log(user)
+          
+            li.push({value: user, label: user})
+        
+          
+        }
+          console.log(li)
+      }
+      )
+
+      
+    
+
+
+      const styles = {
+        control: (base, state) => ({
+            ...base,
+            borderRadius: '5px',
+            color: "#000000",
+            fontSize: "15px",
+            border: '1px solid #E5F7FF',
+            boxShadow: 'none',
+            boxSizing: 'border - box',
+            wordWrap: "break-word",
+            '&:hover':
+                {
+                    border: '1px solid #0679A8',
+                }
+        }),
+        valueContainer: (provided, state) => ({
+            ...provided,
+            textOverflow: "ellipsis",
+            maxWidth: "90%",
+            fontSize: "15px",
+            color: "#000000",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            display: "initial"
+        })
+    };
+
+      var selectUser = (true) ? (<Select 
+        onChange={this.handleSelect}
+closeMenuOnSelect={false}
+components={animatedComponents}
+isMulti
+placeholder="Select Submitters to Assign To"
+options={this.state.users}
+    styles={styles}
+theme={(theme) => ({
+  ...theme,
+  
+  borderRadius: 5,
+  width: '300px',
+  color: "#000000",
+  colors: {
+  ...theme.colors,
+  color: "#000000",
+    text: 'black',
+    primary25: '#74b9ff',
+    primary: 'black',
+    
+  },
+})}
+/>): (<pageDesc>Loading...</pageDesc>)
+
+          
+console.log(this.state.users)
+
+          
+
 
         return (
           <div className="App">
               <header className="App-header">
               {title}
-              <pageDesc>View submission below!</pageDesc>
-
-{/*               
+              <pageDesc>Assign this submission below!</pageDesc>
               
-              <Form style={{ width: '30rem'}}>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label style={{ fontSize: '15px'}}>Select Submission Version</Form.Label>
-                <FloatingLabel controlId="floatingSelect" >
-                    <Form.Select onChange={e => this.setState({ version: e.target.value })}>
-                        <option>Select Paper Version</option>
-                        {optionsRender}
-                    </Form.Select>
-                </FloatingLabel>
-            </Form.Group>
-            </Form> */}
+              
+              {selectUser}
+  
 
 
               <div></div>
               {paper}
+              <div className="action_btn">
+                <Button><Link to={'/dropboxes'} className="action_btn">Confirm Assignment</Link></Button>
+              </div>
               </header>
               
           </div>
@@ -162,4 +235,4 @@ class Submission extends Component {
       }
   }
   
-  export default Submission;
+  export default Assign;

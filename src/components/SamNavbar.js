@@ -84,7 +84,6 @@ class SamNavbar extends Component {
         );
       
       }
-    
 
       else if(role=="PCM"){
     

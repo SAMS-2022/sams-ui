@@ -85,15 +85,15 @@ class CredentialsForm extends Component {
     
     render() {
 
-        var title = JSON.parse(localStorage.getItem("selectedDrop"));
-        console.log(title)
+        var drop = JSON.parse(localStorage.getItem("selectedDrop"));
+        console.log(drop)
 
 
-        var select = (title) ? (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        var select = (drop) ? (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label style={{ fontSize: '15px'}} >Select Submission Dropbox</Form.Label>
         <FloatingLabel controlId="floatingSelect" >
-            <Form.Select onChange={e => this.setState({ dbox: {title} })}>
-                <option value={title}>{title}</option>
+            <Form.Select onChange={e => this.setState({ dbox: {drop} })}>
+                <option value={drop}>{drop}</option>
             </Form.Select>
         </FloatingLabel>
     </Form.Group>) : (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

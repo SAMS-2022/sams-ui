@@ -14,7 +14,7 @@ import NewSubmission from './screens/NewSubmission';
 import LoggedOut from './screens/LoggedOut';
 import Submission from './screens/Submission';
 import Submissions from './screens/Submissions';
-import Reviews from './screens/Reviews';
+import Assign from './screens/Assign';
 import Deadlines from './screens/Deadlines';
 import Notifications from './screens/Notifications';
 
@@ -40,7 +40,7 @@ class App extends Component {
     var newSubmission = (loggedIn) ? (<Route path='/newSubmission' component={NewSubmission} />): <Route path='/newSubmission' component={LoggedOut} />
     var submission = (loggedIn) ? (<Route path='/submission/:submissionId' component={Submission} />): <Route path='/submission/:submissionId' component={LoggedOut} />
     var submissions = (loggedIn) ? (<Route path='/submissions' component={Submissions} />): <Route path='/submissions' component={LoggedOut} />
-    var reviews = (loggedIn) ? (<Route path='/reviews' component={Reviews} />): <Route path='/reviews' component={LoggedOut} />
+    var assign = (loggedIn) ? (<Route path='/assign' component={Assign} />): <Route path='/assign' component={LoggedOut} />
     var deadlines = (loggedIn) ? (<Route path='/notifications' component={Notifications} />): <Route path='/notifications' component={LoggedOut} />
     var notifications = (loggedIn) ? (<Route path='/deadlines' component={Deadlines} />): <Route path='/deadlines' component={LoggedOut} />
 
@@ -59,7 +59,7 @@ class App extends Component {
             {newSubmission}
             {submission}
             {submissions}
-            {reviews}
+            {assign}
             {notifications}
             {deadlines}
           </Switch>
