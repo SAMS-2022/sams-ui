@@ -93,18 +93,23 @@ class MySubmissions extends Component {
 
 
       var submissions = this.state.submissions.reverse().map((sub, i) => {
-        return( (<PreviewCard type={"SUB"} title={sub["title"]} subID={sub["subID"]} desc={sub["author"]} papers={sub["papers"]} buttonText="View Submission"/>))
-      });
+        return( (<div><PreviewCard type={"SUB"} title={sub["title"]} subID={sub["subID"]} desc={sub["author"]} papers={sub["papers"]} buttonText="View Submission"/>
+          </div>))
+      }
+      
+      );
 
       var val = (this.state.submissions.length != 0) ? submissions: load
+
+      var but = (this.state.submissions.length == 0) ? null: (<Button block size="lg" type="submit">
+      <Link to={'/newSubmission'} className="action_btn">Start a new submission</Link>
+      </Button>)
 
         return (
           <div style={{ fontFamily: '"Roboto", sans-serif' }} className="App">
               <header className="App-header">
               <pageTitle>My Paper Submissions</pageTitle>
-              <Button block size="lg" type="submit">
-                <Link to={'/newSubmission'} className="action_btn">Start a new submission</Link>
-                </Button>            
+              {but}
               {val}
               </header>
           </div>

@@ -65,7 +65,7 @@ class PreviewCard extends Component {
           <Card.Title>Author: {this.props.author}</Card.Title>
           <Card.Title>Submission ID: {this.props.submitter}</Card.Title>
           <Card.Title>{this.props.numPap} {(this.props.numPap > 1) ? "Files": "File"} Uploaded</Card.Title>
-          <Card.Title>{this.props.desc}</Card.Title>
+          <Card.Title>Description: {this.props.desc}</Card.Title>
           <Card.Title>{this.props.date}</Card.Title>
           <Card.Title style={{ color: 'rgb(255, 118, 117)' }}>{(this.props.review === "NONE") ? "Status: Review Not Started": ""}</Card.Title>
           <Card.Title style={{ color: 'rgb(253, 203, 110)' }}>{(this.props.review === "IN") ? "Status: In Review": ""}</Card.Title>
